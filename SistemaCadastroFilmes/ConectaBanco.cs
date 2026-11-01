@@ -13,7 +13,8 @@ namespace SistemaCadastroFilmes
         public const int PORT = 3306;
         public const string DATABASE = "banco_filmes";
         public const string USER = "root";
-        public const string PASSWORD = "123456";
+        public static readonly string PASSWORD =
+            Environment.GetEnvironmentVariable("MYSQL_PASSWORD") ?? "";
 
         MySqlConnection conexao = new MySqlConnection(
             $"server={SERVER};" +
