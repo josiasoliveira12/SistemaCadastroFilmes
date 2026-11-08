@@ -57,6 +57,84 @@ namespace SistemaCadastroFilmes
                     conexao.Close();
             }
         }
+
+        public DataTable listaGeneros()
+        {
+            // comentario
+            MySqlCommand cmd = new MySqlCommand("sp_listaGeneros", conexao);
+            cmd.CommandType = CommandType.StoredProcedure;
+            try
+            {
+                conexao.Open();
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable tabela = new DataTable();
+                da.Fill(tabela);
+                return tabela;
+            }// fim try
+            catch (MySqlException e)
+            {
+                mensagem = "Erro:" + e.Message;
+                return null;
+            }
+            finally
+            {
+                conexao.Close();
+            }
+
+        }// fim lista_generos 
+
+        // Metodo no conecta Banco
+
+        public DataTable listaFilmes()
+        {
+            MySqlCommand cmd = new MySqlCommand("sp_listaFilmes", conexao);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            try
+            {
+                conexao.Open();
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable tabela = new DataTable();
+                da.Fill(tabela);
+                return tabela;
+            }// fim try
+            catch (MySqlException e)
+            {
+                mensagem = "Erro:" + e.Message;
+                return null;
+            }
+            finally
+            {
+                conexao.Close();
+            }
+
+        }// fim lista_filmes
+
+        public bool deletaFilme(int idRemoveFilme)
+        {
+            MySqlCommand cmd = new MySqlCommand("sp_removeFilme", conexao);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("p_idFilme", idRemoveFilme);
+
+            try
+            {
+                conexao.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (MySqlException e)
+            {
+                mensagem = "Erro:" + e.Message;
+                return false;
+            }
+            finally
+            {
+                conexao.Close();
+            }
+        }
+
+
+
     }
 
 
