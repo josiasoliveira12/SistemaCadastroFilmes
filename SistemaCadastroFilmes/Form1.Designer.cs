@@ -1,6 +1,6 @@
 ﻿namespace SistemaCadastroFilmes
 {
-    partial class Form1
+    partial class frmCadastroFilmes
     {
         /// <summary>
         ///  Required designer variable.
@@ -30,6 +30,7 @@
         {
             tabControl1 = new TabControl();
             tabCadastro = new TabPage();
+            btnAdicionarGenero = new Button();
             btnCadastrar = new Button();
             cmbGenero = new ComboBox();
             lblGenero = new Label();
@@ -46,16 +47,28 @@
             dgvFilmes = new DataGridView();
             txtBuscar = new TextBox();
             lblBuscar = new Label();
+            tabAlterar = new TabPage();
+            btnConfirmarAlteracao = new Button();
+            cmbAlterarGenero = new ComboBox();
+            txtAlterarDuracao = new TextBox();
+            txtAlterarAno = new TextBox();
+            lblAlterarDuracao = new Label();
+            lblAlterarGenero = new Label();
+            lblAlterarAno = new Label();
+            txtAlterarNome = new TextBox();
+            lblAlterarNome = new Label();
             tabControl1.SuspendLayout();
             tabCadastro.SuspendLayout();
             tabBuscar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFilmes).BeginInit();
+            tabAlterar.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
             // 
             tabControl1.Controls.Add(tabCadastro);
             tabControl1.Controls.Add(tabBuscar);
+            tabControl1.Controls.Add(tabAlterar);
             tabControl1.Location = new Point(-2, 2);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -64,6 +77,7 @@
             // 
             // tabCadastro
             // 
+            tabCadastro.Controls.Add(btnAdicionarGenero);
             tabCadastro.Controls.Add(btnCadastrar);
             tabCadastro.Controls.Add(cmbGenero);
             tabCadastro.Controls.Add(lblGenero);
@@ -81,6 +95,17 @@
             tabCadastro.TabIndex = 0;
             tabCadastro.Text = "Cadastrar";
             tabCadastro.UseVisualStyleBackColor = true;
+            // 
+            // btnAdicionarGenero
+            // 
+            btnAdicionarGenero.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnAdicionarGenero.Location = new Point(539, 299);
+            btnAdicionarGenero.Name = "btnAdicionarGenero";
+            btnAdicionarGenero.Size = new Size(15, 23);
+            btnAdicionarGenero.TabIndex = 20;
+            btnAdicionarGenero.Text = "+";
+            btnAdicionarGenero.UseVisualStyleBackColor = true;
+            btnAdicionarGenero.Click += btnAdicionarGenero_Click;
             // 
             // btnCadastrar
             // 
@@ -199,7 +224,7 @@
             btnAtualizar.Name = "btnAtualizar";
             btnAtualizar.Size = new Size(75, 23);
             btnAtualizar.TabIndex = 5;
-            btnAtualizar.Text = "Atualizar";
+            btnAtualizar.Text = "Alterar";
             btnAtualizar.UseVisualStyleBackColor = true;
             btnAtualizar.Click += button2_Click;
             // 
@@ -246,13 +271,116 @@
             lblBuscar.Text = "Nome do filme:";
             lblBuscar.Click += lblBuscar_Click;
             // 
-            // Form1
+            // tabAlterar
+            // 
+            tabAlterar.Controls.Add(btnConfirmarAlteracao);
+            tabAlterar.Controls.Add(cmbAlterarGenero);
+            tabAlterar.Controls.Add(txtAlterarDuracao);
+            tabAlterar.Controls.Add(txtAlterarAno);
+            tabAlterar.Controls.Add(lblAlterarDuracao);
+            tabAlterar.Controls.Add(lblAlterarGenero);
+            tabAlterar.Controls.Add(lblAlterarAno);
+            tabAlterar.Controls.Add(txtAlterarNome);
+            tabAlterar.Controls.Add(lblAlterarNome);
+            tabAlterar.Font = new Font("Segoe UI", 15F);
+            tabAlterar.Location = new Point(4, 24);
+            tabAlterar.Name = "tabAlterar";
+            tabAlterar.Padding = new Padding(3);
+            tabAlterar.Size = new Size(781, 433);
+            tabAlterar.TabIndex = 2;
+            tabAlterar.Text = "Alterar";
+            tabAlterar.UseVisualStyleBackColor = true;
+            tabAlterar.Click += tabAlterar_Click;
+            // 
+            // btnConfirmarAlteracao
+            // 
+            btnConfirmarAlteracao.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnConfirmarAlteracao.Location = new Point(416, 240);
+            btnConfirmarAlteracao.Name = "btnConfirmarAlteracao";
+            btnConfirmarAlteracao.Size = new Size(166, 41);
+            btnConfirmarAlteracao.TabIndex = 9;
+            btnConfirmarAlteracao.Text = "Confirmar Alteração";
+            btnConfirmarAlteracao.UseVisualStyleBackColor = true;
+            btnConfirmarAlteracao.Click += btnConfirmarAlteracao_Click;
+            // 
+            // cmbAlterarGenero
+            // 
+            cmbAlterarGenero.FormattingEnabled = true;
+            cmbAlterarGenero.Location = new Point(254, 90);
+            cmbAlterarGenero.Name = "cmbAlterarGenero";
+            cmbAlterarGenero.Size = new Size(473, 36);
+            cmbAlterarGenero.TabIndex = 8;
+            // 
+            // txtAlterarDuracao
+            // 
+            txtAlterarDuracao.Location = new Point(254, 132);
+            txtAlterarDuracao.Name = "txtAlterarDuracao";
+            txtAlterarDuracao.Size = new Size(473, 34);
+            txtAlterarDuracao.TabIndex = 6;
+            // 
+            // txtAlterarAno
+            // 
+            txtAlterarAno.Location = new Point(254, 172);
+            txtAlterarAno.Name = "txtAlterarAno";
+            txtAlterarAno.Size = new Size(473, 34);
+            txtAlterarAno.TabIndex = 5;
+            // 
+            // lblAlterarDuracao
+            // 
+            lblAlterarDuracao.AutoSize = true;
+            lblAlterarDuracao.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            lblAlterarDuracao.Location = new Point(78, 135);
+            lblAlterarDuracao.Name = "lblAlterarDuracao";
+            lblAlterarDuracao.Size = new Size(96, 28);
+            lblAlterarDuracao.TabIndex = 4;
+            lblAlterarDuracao.Text = "Duração:";
+            lblAlterarDuracao.Click += label3_Click;
+            // 
+            // lblAlterarGenero
+            // 
+            lblAlterarGenero.AutoSize = true;
+            lblAlterarGenero.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            lblAlterarGenero.Location = new Point(78, 90);
+            lblAlterarGenero.Name = "lblAlterarGenero";
+            lblAlterarGenero.Size = new Size(85, 28);
+            lblAlterarGenero.TabIndex = 3;
+            lblAlterarGenero.Text = "Genero:";
+            // 
+            // lblAlterarAno
+            // 
+            lblAlterarAno.AutoSize = true;
+            lblAlterarAno.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            lblAlterarAno.Location = new Point(78, 178);
+            lblAlterarAno.Name = "lblAlterarAno";
+            lblAlterarAno.Size = new Size(55, 28);
+            lblAlterarAno.TabIndex = 2;
+            lblAlterarAno.Text = "Ano:";
+            // 
+            // txtAlterarNome
+            // 
+            txtAlterarNome.Location = new Point(254, 50);
+            txtAlterarNome.Name = "txtAlterarNome";
+            txtAlterarNome.Size = new Size(473, 34);
+            txtAlterarNome.TabIndex = 1;
+            txtAlterarNome.TextChanged += textBox1_TextChanged;
+            // 
+            // lblAlterarNome
+            // 
+            lblAlterarNome.AutoSize = true;
+            lblAlterarNome.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            lblAlterarNome.Location = new Point(78, 56);
+            lblAlterarNome.Name = "lblAlterarNome";
+            lblAlterarNome.Size = new Size(158, 28);
+            lblAlterarNome.TabIndex = 0;
+            lblAlterarNome.Text = "Titulo do filme:";
+            // 
+            // frmCadastroFilmes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(784, 461);
+            ClientSize = new Size(706, 461);
             Controls.Add(tabControl1);
-            Name = "Form1";
+            Name = "frmCadastroFilmes";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastro de Filmes";
             Load += Form1_Load;
@@ -262,6 +390,8 @@
             tabBuscar.ResumeLayout(false);
             tabBuscar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFilmes).EndInit();
+            tabAlterar.ResumeLayout(false);
+            tabAlterar.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -269,7 +399,7 @@
         private TabControl TabControl;
         private TabPage tabCadastro;
         private TabControl tabControl1;
-        private TabPage tabPage1;
+        private TabPage tabAlterar;
         private TabPage tabBuscar;
         private Button btnCadastrar;
         private ComboBox cmbGenero;
@@ -286,5 +416,15 @@
         private TextBox txtBuscar;
         private Button btnAtualizar;
         private Button btnDeletar;
+        private Label lblAlterarNome;
+        private TextBox txtAlterarNome;
+        private Label lblAlterarDuracao;
+        private Label lblAlterarGenero;
+        private Label lblAlterarAno;
+        private TextBox txtAlterarAno;
+        private TextBox txtAlterarDuracao;
+        private ComboBox cmbAlterarGenero;
+        private Button btnConfirmarAlteracao;
+        private Button btnAdicionarGenero;
     }
 }

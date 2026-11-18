@@ -133,7 +133,91 @@ namespace SistemaCadastroFilmes
             }
         }
 
+        public bool alteraFilme(Filme f, int idFilme)
+        {
+            MySqlCommand cmd = new MySqlCommand("sp_alteraFilme", conexao);
+            cmd.CommandType = CommandType.StoredProcedure;
 
+            cmd.Parameters.AddWithValue("p_idFilme", idFilme);
+            cmd.Parameters.AddWithValue("p_titulo", f.Nome);
+            cmd.Parameters.AddWithValue("p_ano", f.Ano);
+            cmd.Parameters.AddWithValue("p_duracao", f.Duracao);
+            cmd.Parameters.AddWithValue("p_genero", f.Genero);
+
+            try
+            {
+                conexao.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (MySqlException e)
+            {
+                mensagem = "Erro:" + e.Message;
+                return false;
+            }
+            finally
+            {
+                conexao.Close();
+            }
+        }// fim alteraFilme
+
+        public bool insereGenero(string nomeGenero)
+        {
+            try
+            {
+                conexao.Open();
+
+                MySqlCommand cmd =
+                    new MySqlCommand("sp_insereGenero", conexao);
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("nomeGenero", nomeGenero);
+                cmd.ExecuteNonQuery();
+
+                return true;
+            }
+            catch (MySqlException erro)
+            {
+                mensagem = erro.Message;
+                return false;
+            }
+            
+        }
+
+        public bool verifica(string user, string pass)
+        {
+            string senhaHash = Biblioteca.makeHash(pass);
+
+            MySqlCommand cmd = new MySqlCommand("consultaLogin", conexao);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("usuario", user);
+            cmd.Parameters.AddWithValue("senha", senhaHash);
+
+            try
+            {
+                conexao.Open(); // abrindo a conexão
+
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+
+                da.Fill(ds); // passando os valores consultados para o DataSet
+
+                if (ds.Tables[0].Rows.Count > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (MySqlException er)
+            {
+                mensagem = "Erro:" + er.Message;
+                return false;
+            }
+            finally
+            {
+                conexao.Close();
+            }
+        }
 
     }
 

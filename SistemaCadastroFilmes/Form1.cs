@@ -2,9 +2,10 @@ using System.Data;
 
 namespace SistemaCadastroFilmes
 {
-    public partial class Form1 : Form
+    public partial class frmCadastroFilmes : Form
     {
-        public Form1()
+        int idAlterar;
+        public frmCadastroFilmes()
         {
             InitializeComponent();
         }
@@ -63,6 +64,10 @@ namespace SistemaCadastroFilmes
             cmbGenero.DataSource = tabelaDados;
             cmbGenero.DisplayMember = "genero";
             cmbGenero.ValueMember = "idgenero";
+
+            cmbAlterarGenero.DataSource = tabelaDados;
+            cmbAlterarGenero.DisplayMember = "genero";
+            cmbAlterarGenero.ValueMember = "idgenero";
 
         }
 
@@ -132,6 +137,73 @@ namespace SistemaCadastroFilmes
 
         private void button2_Click(object sender, EventArgs e)
         {
+            int linha = dgvFilmes.CurrentRow.Index;
+
+            idAlterar = Convert.ToInt32(
+                dgvFilmes.Rows[linha].Cells["idfilme"].Value.ToString());
+
+            txtAlterarNome.Text =
+                dgvFilmes.Rows[linha].Cells["titulo"].Value.ToString();
+
+            txtAlterarAno.Text =
+                dgvFilmes.Rows[linha].Cells["ano"].Value.ToString();
+
+            txtAlterarDuracao.Text =
+                dgvFilmes.Rows[linha].Cells["duracao"].Value.ToString();
+
+            cmbAlterarGenero.Text =
+                dgvFilmes.Rows[linha].Cells["genero"].Value.ToString();
+
+            tabControl1.SelectedTab = tabAlterar;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabAlterar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnConfirmarAlteracao_Click(object sender, EventArgs e)
+        {
+            ConectaBanco con = new ConectaBanco();
+            Filme novoFilme = new Filme();
+            novoFilme.Nome = txtAlterarNome.Text;
+            novoFilme.Ano = Convert.ToInt32(txtAlterarAno.Text);
+            novoFilme.Duracao = Convert.ToInt32(txtAlterarDuracao.Text);
+            novoFilme.Genero = Convert.ToInt32(cmbAlterarGenero.SelectedValue.ToString());
+
+            bool retorno = con.alteraFilme(novoFilme, idAlterar);
+            if (retorno == false)
+            {
+
+                MessageBox.Show(con.mensagem);
+
+            }
+            else
+            {
+                MessageBox.Show("Alteração realizada com sucesso!");
+            }
+
+            lista_gridFilmes();
+        }
+
+        private void btnAdicionarGenero_Click(object sender, EventArgs e)
+        {
+           
+            frmAddGenero formGenero = new frmAddGenero();
+            this.Hide();
+            formGenero.ShowDialog();
+            this.Close();
+           
 
         }
     }
