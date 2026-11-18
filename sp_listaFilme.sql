@@ -1,8 +1,6 @@
-DROP PROCEDURE IF EXISTS sp_listaFilmes;
-
-DELIMITER //
-
-CREATE PROCEDURE sp_listaFilmes()
+DELIMITER %%
+DROP PROCEDURE `banco_filmes`.`sp_listaFilmes`%%
+CREATE DEFINER=`root`@`localhost` PROCEDURE `banco_filmes`.`sp_listaFilmes`()
 BEGIN
 
     SELECT
@@ -17,6 +15,5 @@ BEGIN
     INNER JOIN generos
         ON filmes.fk_genero = generos.idgenero;
 
-END //
-
+END%%
 DELIMITER ;
