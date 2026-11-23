@@ -24,7 +24,7 @@ namespace SistemaCadastroFilmes
         {
             ConectaBanco conecta = new ConectaBanco();
 
-            if (conecta.verifica(txtUserLogin.Text,txtUserLogin.Text) == true)
+            if (conecta.verifica(txtUserLogin.Text, txtUserLogin.Text) == true)
             {
                 frmCadastroFilmes sis = new frmCadastroFilmes();
                 this.Hide();
@@ -36,7 +36,12 @@ namespace SistemaCadastroFilmes
                 MessageBox.Show("Usuario ou senha incorretas!" + conecta.mensagem);
 
             }
-               
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
