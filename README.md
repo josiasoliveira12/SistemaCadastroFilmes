@@ -36,13 +36,18 @@ Desenvolver uma aplicação desktop integrada a um banco de dados, aplicando con
 ## Tela de login
 ![Tela de Login](imagens/Login.png)
 
+## Tela cadastro
 ![Cadastro de Filmes](imagens/Cadastro.png)
 
+## Tela buscar
 ![Busca de Filmes](imagens/Buscar.png)
 
+## Tela Alterar dados
 ![Alteração de Filmes](imagens/Alterar.png)
 
+## Tela Cadastro de genero
 ![Cadastro de Gêneros](imagens/addGenero.png)
+
 ## Estrutura do projeto
 
 
