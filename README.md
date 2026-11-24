@@ -15,6 +15,31 @@ Desenvolver uma aplicação desktop integrada a um banco de dados, aplicando con
 - Visual Studio
 - Git e GitHub
 
+## Instalação e execução
+
+# Pré-requisitos
+
+Antes de executar o projeto, é necessário instalar:
+
+- [Visual Studio Community](https://visualstudio.microsoft.com/pt-br/vs/community/) com a carga de trabalho **Desenvolvimento para desktop com .NET**.
+- [MySQL Server](https://dev.mysql.com/downloads/mysql/).
+- [MySQL Workbench](https://dev.mysql.com/downloads/workbench/).
+
+### Como executar o projeto
+
+1. Faça o download ou clone este repositório.
+2. Abra o arquivo `SistemaCadastroFilmes.slnx` no Visual Studio Community.
+3. Configure o banco de dados MySQL.
+4. Execute os scripts SQL disponibilizados no repositório para criar as tabelas e procedures.
+5. Configure a conexão do projeto com o banco de dados.
+6. Aguarde a restauração dos pacotes NuGet necessários.
+7. No Visual Studio, pressione `F5` ou clique em **Iniciar** para executar o sistema.
+
+### Banco de dados
+
+O banco utilizado pelo projeto é `banco_filmes`.
+
+Os scripts SQL necessários estão disponíveis na raiz do repositório.
 ## Funcionalidades implementadas
 
 - Conexão com o banco de dados MySQL.
