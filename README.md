@@ -32,8 +32,19 @@ Desenvolver uma aplicação desktop integrada a um banco de dados, aplicando con
 - Desenvolvimento da tela de login.
 - Utilização de hash SHA-256 para proteger as senhas.
 - Validação de usuário e senha por meio de procedure no banco de dados.
+- 
+## Tela de login
+![Tela de Login](imagens/Login.png)
 
+![Cadastro de Filmes](imagens/Cadastro.png)
+
+![Busca de Filmes](imagens/Buscar.png)
+
+![Alteração de Filmes](imagens/Alterar.png)
+
+![Cadastro de Gêneros](imagens/addGenero.png)
 ## Estrutura do projeto
+
 
 - `Filme.cs`: classe responsável pelos dados do filme.
 - `ConectaBanco.cs`: classe responsável pela conexão e pelas operações com o banco de dados.

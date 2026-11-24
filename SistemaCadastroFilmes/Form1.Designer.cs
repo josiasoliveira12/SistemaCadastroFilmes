@@ -99,9 +99,9 @@
             // btnAdicionarGenero
             // 
             btnAdicionarGenero.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnAdicionarGenero.Location = new Point(539, 299);
+            btnAdicionarGenero.Location = new Point(524, 296);
             btnAdicionarGenero.Name = "btnAdicionarGenero";
-            btnAdicionarGenero.Size = new Size(15, 23);
+            btnAdicionarGenero.Size = new Size(32, 23);
             btnAdicionarGenero.TabIndex = 20;
             btnAdicionarGenero.Text = "+";
             btnAdicionarGenero.UseVisualStyleBackColor = true;
@@ -378,7 +378,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(706, 461);
+            ClientSize = new Size(845, 461);
             Controls.Add(tabControl1);
             Name = "frmCadastroFilmes";
             StartPosition = FormStartPosition.CenterScreen;
