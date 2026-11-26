@@ -61,6 +61,7 @@
             txtSenhaLogin.PasswordChar = '*';
             txtSenhaLogin.Size = new Size(329, 23);
             txtSenhaLogin.TabIndex = 24;
+            txtSenhaLogin.TextChanged += txtSenhaLogin_TextChanged;
             // 
             // btnLogin
             // 

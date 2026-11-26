@@ -24,7 +24,7 @@ namespace SistemaCadastroFilmes
         {
             ConectaBanco conecta = new ConectaBanco();
 
-            if (conecta.verifica(txtUserLogin.Text, txtUserLogin.Text) == true)
+            if (conecta.verifica(txtUserLogin.Text, txtSenhaLogin.Text) == true)
             {
                 frmCadastroFilmes sis = new frmCadastroFilmes();
                 this.Hide();
@@ -40,6 +40,11 @@ namespace SistemaCadastroFilmes
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSenhaLogin_TextChanged(object sender, EventArgs e)
         {
 
         }

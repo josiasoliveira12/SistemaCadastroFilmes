@@ -1,9 +1,17 @@
-DELIMITER %%
-DROP PROCEDURE `banco_filmes`.`consultaLogin`%%
-CREATE DEFINER=`root`@`localhost` PROCEDURE `banco_filmes`.`consultaLogin`(IN usuario VARCHAR(100))
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS consultaLogin$$
+
+CREATE PROCEDURE consultaLogin(
+    IN p_usuario VARCHAR(100),
+    IN p_senha VARCHAR(100)
+)
 BEGIN
-    SELECT senha
+    SELECT nome
     FROM usuarios
-    WHERE nome = usuario;
-END%%
+    WHERE nome = p_usuario
+      AND senha = p_senha;
+END$$
+
 DELIMITER ;

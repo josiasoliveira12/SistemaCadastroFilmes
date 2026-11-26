@@ -8,7 +8,7 @@ namespace SistemaCadastroFilmes
 {
     internal class ConectaBanco
     {
-        // Dados da conexão com o banco
+        // Conexão MySQL
         public const string SERVER = "localhost";
         public const int PORT = 3306;
         public const string DATABASE = "banco_filmes";
@@ -25,7 +25,7 @@ namespace SistemaCadastroFilmes
 
         public string mensagem;
 
-        // Método para inserir filme
+        // inserir filme
         public bool insereFilme(Filme novoFilme)
         {
             try
@@ -60,7 +60,7 @@ namespace SistemaCadastroFilmes
 
         public DataTable listaGeneros()
         {
-            // comentario
+            
             MySqlCommand cmd = new MySqlCommand("sp_listaGeneros", conexao);
             cmd.CommandType = CommandType.StoredProcedure;
             try
@@ -70,7 +70,7 @@ namespace SistemaCadastroFilmes
                 DataTable tabela = new DataTable();
                 da.Fill(tabela);
                 return tabela;
-            }// fim try
+            }
             catch (MySqlException e)
             {
                 mensagem = "Erro:" + e.Message;
@@ -81,10 +81,7 @@ namespace SistemaCadastroFilmes
                 conexao.Close();
             }
 
-        }// fim lista_generos 
-
-        // Metodo no conecta Banco
-
+        }
         public DataTable listaFilmes()
         {
             MySqlCommand cmd = new MySqlCommand("sp_listaFilmes", conexao);
@@ -97,7 +94,7 @@ namespace SistemaCadastroFilmes
                 DataTable tabela = new DataTable();
                 da.Fill(tabela);
                 return tabela;
-            }// fim try
+            }
             catch (MySqlException e)
             {
                 mensagem = "Erro:" + e.Message;
@@ -108,7 +105,7 @@ namespace SistemaCadastroFilmes
                 conexao.Close();
             }
 
-        }// fim lista_filmes
+        }
 
         public bool deletaFilme(int idRemoveFilme)
         {
@@ -159,7 +156,7 @@ namespace SistemaCadastroFilmes
             {
                 conexao.Close();
             }
-        }// fim alteraFilme
+        }
 
         public bool insereGenero(string nomeGenero)
         {
@@ -191,17 +188,17 @@ namespace SistemaCadastroFilmes
             MySqlCommand cmd = new MySqlCommand("consultaLogin", conexao);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("usuario", user);
-            cmd.Parameters.AddWithValue("senha", senhaHash);
+            cmd.Parameters.AddWithValue("p_usuario", user);
+            cmd.Parameters.AddWithValue("p_senha", senhaHash);
 
             try
             {
-                conexao.Open(); // abrindo a conexão
+                conexao.Open(); // abrindo conexão
 
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
 
-                da.Fill(ds); // passando os valores consultados para o DataSet
+                da.Fill(ds); // Prencher DataSet
 
                 if (ds.Tables[0].Rows.Count > 0)
                     return true;
